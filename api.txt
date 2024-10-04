@@ -1,0 +1,20 @@
+Google Cloud Console 
+
+client ID
+740070188105-g6eplsit86mc1f0thecfcacuej7vpm9d.apps.googleusercontent.com
+
+API key created
+
+AIzaSyBWcmZ6ZG_K-T_3jHKuQX_TnEsl_h8kjx4
+
+Spotify
+Client ID
+f551026234de40d08e493e9eebbd9254
+
+Client secret
+ff9115b90a234802bef6d3b1822cff63
+
+GOOGLE_CLIENT_ID=740070188105-g6eplsit86mc1f0thecfcacuej7vpm9d.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=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
+SPOTIFY_CLIENT_ID=f551026234de40d08e493e9eebbd9254
+SPOTIFY_CLIENT_SECRET=ff9115b90a234802bef6d3b1822cff6
