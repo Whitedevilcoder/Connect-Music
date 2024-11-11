@@ -68,7 +68,7 @@ Here's a high-level structure of how you can organize the code for your full-sta
 plaintext
 Copy code
 
-"""
+```
 project-root/
 │
 ├── backend/                 # Backend-related code
@@ -132,12 +132,14 @@ project-root/
 ├── README.md                # Project documentation
 ├── package.json             # Backend dependencies
 └── yarn.lock / package-lock.json # Dependency lock file
-"""
+```
 
 2. Backend (Node.js + Express Example)
 app.js (Express Setup)
 javascript
 Copy code
+
+```
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -203,10 +205,14 @@ exports.getOAuthUrl = () => {
 exports.handleOAuthCallback = async (code) => {
   // Handle OAuth callback and return tokens
 };
+```
+
 3. Frontend (React Example)
 src/App.js
 javascript
 Copy code
+
+```
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './pages/HomePage';
@@ -224,11 +230,14 @@ function App() {
     </Router>
   );
 }
+```
 
 export default App;
 src/pages/LoginPage.jsx
 javascript
 Copy code
+
+```
 import React from 'react';
 
 const LoginPage = () => {
@@ -243,11 +252,12 @@ const LoginPage = () => {
     </div>
   );
 };
-
+```
 export default LoginPage;
 src/pages/HomePage.jsx
 javascript
 Copy code
+```
 import React from 'react';
 
 const HomePage = () => {
@@ -257,11 +267,12 @@ const HomePage = () => {
     </div>
   );
 };
-
+```
 export default HomePage;
 src/pages/TransferPage.jsx
 javascript
 Copy code
+```
 import React, { useState, useEffect } from 'react';
 import { fetchPlaylists, transferPlaylists } from '../services/transferService';
 
@@ -292,11 +303,12 @@ const TransferPage = () => {
     </div>
   );
 };
-
+```
 export default TransferPage;
 src/services/transferService.js
 javascript
 Copy code
+```
 export async function fetchPlaylists() {
   const response = await fetch('http://localhost:5000/youtube/playlists');
   const data = await response.json();
@@ -310,22 +322,33 @@ export async function transferPlaylists(playlists) {
     headers: { 'Content-Type': 'application/json' },
   });
 }
+```
+
 4. Configuration Files
 config/keys.js
 javascript
 Copy code
+
+```
 module.exports = {
   SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
   SPOTIFY_CLIENT_SECRET: process.env.SPOTIFY_CLIENT_SECRET,
   YOUTUBE_CLIENT_ID: process.env.YOUTUBE_CLIENT_ID,
   YOUTUBE_CLIENT_SECRET: process.env.YOUTUBE_CLIENT_SECRET,
 };
+
+```
 config/env.js
 javascript
 Copy code
+
+```
 module.exports = {
   PORT: process.env.PORT || 5000,
 };
+```
+
+
 5. Deployment
 Frontend: Deploy to Netlify or Vercel.
 Backend: Deploy to Heroku, AWS, or DigitalOcean.
