@@ -1,3 +1,9 @@
-// setTimeout(() => {
-//     document.querySelector(".homeScreen_title").innerHTML = "Transfer Your Playlists Between Music Services"
-// }, 3000);
+function login() {
+    console.log("redirected to login page");
+    window.location.href = "./login"
+}
+
+function onConvert() {
+    console.log("button is clicked");
+    window.location.href = "./YTS"
+}

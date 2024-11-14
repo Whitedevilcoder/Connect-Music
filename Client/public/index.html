@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../src/css/style.css">
     <title>Connect Music</title>
 </head>
 
@@ -16,7 +16,7 @@
         <ul>
             <li><a href="#Home">Home</a></li>
             <li><a href="#Home">Help</a></li>
-            <li><a href="#Home">Country</a></li>
+            <li onclick="login()">Login</a></li>
         </ul>
     </nav>
 
@@ -27,7 +27,7 @@
                 </h1>
             </div>
             <div class="homeScreen_image">
-                <img src="img/companies.svg" alt="companies">
+                <img src="../src/img/companies.svg" alt="companies">
             </div>
             <div class="homeScreen_title ">
                 <h2>Transfer your music library from any music service to any other you want! Supports Spotify, TIDAL,
@@ -48,24 +48,24 @@
 
 
         <div class="Conversion_row">
-            <img class="row_images" src="logo/YouTube_Music.svg" alt="Spotify">
-            <img class="row_images" src="logo/spotify.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/YouTube_Music.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/spotify.svg" alt="Spotify">
             <span class="row_text">
                 YouTube Music to Spotify
             </span>
-            <button class="s-btn">Convert</button>
+            <button onclick="onConvert()" class="s-btn">Convert</button>
         </div>
         <div class="Conversion_row">
-            <img class="row_images" src="logo/Apple_Music.svg" alt="Spotify">
-            <img class="row_images" src="logo/spotify.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/Apple_Music.svg" alt="Spotify">
+            <img class="row_images" src="../src/logo/spotify.svg" alt="YouTube Music">
             <span class="row_text">
                 Apple Music to Spotify
             </span>
             <button class="s-btn">Convert</button>
         </div>
         <div class="Conversion_row">
-            <img class="row_images" src="logo/prime.svg" alt="Spotify">
-            <img class="row_images" src="logo/Tidal.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/prime.svg" alt="Spotify">
+            <img class="row_images" src="../src/logo/Tidal.svg" alt="YouTube Music">
             <span class="row_text">
                 Prime to Tidal
             </span>
@@ -73,24 +73,24 @@
         </div>
 
         <div class="Conversion_row">
-            <img class="row_images" src="logo/spotify.svg" alt="Spotify">
-            <img class="row_images" src="logo/YouTube_Music.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/spotify.svg" alt="Spotify">
+            <img class="row_images" src="../src/logo/YouTube_Music.svg" alt="YouTube Music">
             <span class="row_text">
                 Spotify to YouTube Music
             </span>
             <button class="s-btn">Convert</button>
         </div>
         <div class="Conversion_row">
-            <img class="row_images" src="logo/Tidal.svg" alt="Spotify">
-            <img class="row_images" src="logo/dezeer.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/Tidal.svg" alt="Spotify">
+            <img class="row_images" src="../src/logo/dezeer.svg" alt="YouTube Music">
             <span class="row_text">
                 Tidal to Deezer
             </span>
             <button class="s-btn">Convert</button>
         </div>
         <div class="Conversion_row">
-            <img class="row_images" src="logo/dezeer.svg" alt="Spotify">
-            <img class="row_images" src="logo/spotify.svg" alt="YouTube Music">
+            <img class="row_images" src="../src/logo/dezeer.svg" alt="Spotify">
+            <img class="row_images" src="../src/logo/spotify.svg" alt="YouTube Music">
             <span class="row_text">
                 Deezer to Spotify
             </span>
@@ -100,9 +100,9 @@
 
     </div>
     <footer>
-        G Praveen Kumar Production &copy; 2024
+        G Praveen Kumar Production &copy; 2024. All Rights Reserved
     </footer>
-    <script src="script.js"></script>
+    <script src="../src/js/script.js"></script>
 </body>
 
 </html>

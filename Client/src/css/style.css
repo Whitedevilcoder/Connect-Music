@@ -180,20 +180,14 @@ h2 {
     margin-bottom: 30px;
     color: white;
 
-    background-color: #5458cd;
+    /* background-color: #5458cd; */
     background-color: #181d38;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, .1), 0 16px 32px rgb(95, 95, 202);
+    /* box-shadow: 0 4px 16px rgba(0, 0, 0, .1), 0 16px 32px rgb(95, 95, 202);   */
     cursor: pointer;
     transition: transform 0.3s ease-in-out,
         transform 0.3s ease-in-out;
 }
 
-.btn:hover {
-    background-color: #5458cd;
-
-    box-shadow: 0 4px 16px rgba(0, 0, 0, .1), 0 16px 32px rgb(95, 95, 202);
-    width: 400px;
-}
 
 .conversion {
     display: flex;
@@ -278,14 +272,19 @@ footer {
 }
 
 .form-body {
-    /* /* display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; */
-    margin: 0; */
-    background-color: rgb(72 103 170);
+    height: 100vh;
+    margin: 0; 
+    margin-left: 50vw;
+    /* background-color: rgb(72 103 170); */
+    background-image: url(../img/istockphoto-1297013252-612x612.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100%, 100%;
     /* filter: blur(2px); */
-    /* z-index: -1; */
+    z-index: -1;
     
 
 }
@@ -308,8 +307,10 @@ footer {
     padding: 20px;
     margin: 100px;
     color: white;
-    background-color: #0e1124;
+    /* background-color: #0e1124; */
+    background-color: #292929;
     box-shadow: 0 0 40px rgb(17, 66, 172);
+    box-shadow: 0 0 40px hwb(306.23deg 1.18% 68.63%);
 }
 
 form{
@@ -329,6 +330,7 @@ form{
     font-weight: 600;
     cursor: pointer;
     width: 300px;
+    transition: background-color 0.3s;
     /* align-items: center; */
     /* justify-content: center; */
     /* text-align: center; */
@@ -382,9 +384,11 @@ input{
     text-align: center;
 }
 
-.sign-btn{
+.sign-btn, .s-btn{
     display: flex;
     flex-direction: column;
+    
+    transition: background-color 0.3s;
     /* line-height: 40px; */
     /* justify-content: center; */
     align-items: center;
@@ -397,3 +401,4 @@ input{
     margin: 0;
     padding: 8px;
 } */
+
