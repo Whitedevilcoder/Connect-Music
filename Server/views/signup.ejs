@@ -4,44 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
-    <div class="container">
-        <h1>Sign Up</h1>
+<body class="form-body">
+    <div class="form-Container">
 
-        <form action="/signup" method="post">
+        <div class="sign-in-title">SignUp</div>
+        <form action="/signup" method="POST">
 
-            <div class="form-body">
-                <div class="form-group">
 
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" name="fullname" required placeholder="Full Name">
-                    <div class="error-msg" id="fullnameError"></div>
+            <div class="signup">
+               
+                <label for="name">Username:</label>
+                <input type="text" id="name" name="username" placeholder="Enter your username" required autocomplete="off">
+               
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="off">
+             
+                <label for="password">password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+             
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                <div class="sign-btn">
+                    <button class="s-btn" type="submit">signup</button>
                 </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="Email">
-                    <div class="error-msg" id="emailError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required placeholder="password">
-                    <div class="error-msg" id="passwordError"></div>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="Confirm Password" required placeholder="confirmPassword">
-                    <div class="error-msg" id="confirmPasswordError"></div>
-                </div>
-
             </div>
-
         </form>
+
     </div>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>

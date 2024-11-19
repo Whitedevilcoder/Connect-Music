@@ -9,7 +9,7 @@ app.use('/img', express.static(path.join(__dirname, '../client/src/img')))
 app.use('/js', express.static(path.join(__dirname, '../client/src/js')))
 
 app.set('view engine', 'ejs');
-app.set('viewa', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res)=> {
     res.render('signup');
