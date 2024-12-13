@@ -1,6 +1,6 @@
 const { name } = require('ejs');
 const mongoose = require("mongoose")
-const connect = mongoose.connect('mongodb://localhost:27017/login')
+const connect = mongoose.connect('mongodb://localhost:27017/Connectmusic')
 
 
 // check db is connected
@@ -17,16 +17,17 @@ connect.then(() => {
 
 // schema
 const loginSchema = new mongoose.Schema({
-   
+
     username: {
         type: String,
         required: true
     },
+    
     email: {
         type: String,
         required: true
     },
-  
+
     password: {
         type: String,
         required: true
@@ -35,7 +36,7 @@ const loginSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-  
+
 });
 
 // moddel

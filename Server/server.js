@@ -37,6 +37,13 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
   res.render('signup');
 });
+app.get('/profile', (req, res) => {
+  // res.render('profile');
+  const username = "johndoe"; // change after the user will logged in 
+
+
+  res.render('profile', { username: username });
+});
 
 // Register User
 app.post('/signup', async (req, res) => {
@@ -66,7 +73,7 @@ app.post('/signup', async (req, res) => {
     await newUser.save();
     console.log(newUser);
     
-    res.status(201).send('User registered successfully');
+    res.status(200).send('User registered successfully');
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
