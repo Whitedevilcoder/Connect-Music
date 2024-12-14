@@ -1,11 +1,14 @@
-node_modules/.bin/rlp
-
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # Runtime data
 pids
@@ -18,11 +21,12 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
+*.lcov
 
 # nyc test coverage
 .nyc_output
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
 # Bower dependency directory (https://bower.io/)
@@ -70,6 +74,10 @@ typings/
 
 # dotenv environment variable files
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
 .env.test
 .env.production
 
@@ -112,8 +120,15 @@ public
 # TernJS port file
 .tern-port
 
-# VS Code directory
-.vscode/
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
 
 # JetBrains IDE directories
 .idea/
@@ -121,9 +136,6 @@ public
 
 # SvelteKit build output
 .svelte-kit
-
-# Optional stylelint cache
-.stylelintcache
 
 # Husky directory
 .husky/
@@ -143,7 +155,6 @@ svelte-kit
 # Webpack build output
 dist/
 .terraform/
-.idea/
 
 # Temp directories
 tmp/
@@ -165,3 +176,6 @@ cypress/videos/
 
 # Azure Functions
 local.settings.json
+
+# Specific file exclusions
+node_modules/.bin/rlp
