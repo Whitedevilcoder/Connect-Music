@@ -39,7 +39,7 @@ const loginSchema = new mongoose.Schema({
 
 });
 
-// moddel
+// model
 
 const collection = new mongoose.model("userdetails", loginSchema);
 
