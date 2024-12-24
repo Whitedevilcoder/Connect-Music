@@ -1,7 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 const collection = require('./config/config'); // Ensure this path is correct
 
 const app = express();
@@ -12,6 +12,15 @@ app.use(express.json());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 
+// Session management setup
+app.use(session({
+  secret: 'your-secret-key', // Change this to a stronger secret key in production
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Set to true for HTTPS
+}));
+
+// Set EJS as the view engine and views directory
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -22,30 +31,37 @@ app.use('/css', express.static(path.join(__dirname, '../client/src/css')));
 app.use('/img', express.static(path.join(__dirname, '../client/src/img')));
 app.use('/js', express.static(path.join(__dirname, '../client/src/js')));
 
+// Homepage route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/index.html'));
 });
 
+// YTS conversion page
 app.get('/YTS', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/public/convert.html'));
 });
 
+// Login page
 app.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Signup page
 app.get('/signup', (req, res) => {
   res.render('signup');
 });
+
+// Profile page - Displays profile info from session
 app.get('/profile', (req, res) => {
-  // res.render('profile');
-  const username = "johndoe"; // change after the user will logged in 
+  if (!req.session.user) {
+    return res.redirect('/login'); // Redirect to login if user is not authenticated
+  }
 
-
-  res.render('profile', { username: username });
+  const { username, email } = req.session.user;
+  res.render('profile', { username, email });
 });
 
-// Register User
+// Register User (Sign Up)
 app.post('/signup', async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 
@@ -72,7 +88,7 @@ app.post('/signup', async (req, res) => {
 
     await newUser.save();
     console.log(newUser);
-    
+
     res.status(200).send('User registered successfully');
   } catch (err) {
     console.error(err);
@@ -98,14 +114,18 @@ app.post('/login', async (req, res) => {
       return res.status(400).send('Wrong password');
     }
 
-    res.render('profile', { username: user.username });
+    // Store user data in session
+    req.session.user = { username: user.username, email: user.email };
+
+    // Redirect to profile page after successful login
+    res.redirect('/profile');
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');
   }
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running at port: ${port}`);
 });
-

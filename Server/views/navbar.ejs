@@ -1,0 +1,68 @@
+<style>
+    nav {
+        background-color: #242a48;
+        color: white;
+        padding: 20px 30px;
+        /* position: fixed; */
+        display: flex;
+        /* flex-direction: row; */
+        justify-content: space-between;
+        /* overflow: hidden; */
+        width: 100%;
+
+    }
+
+    nav.sticky {
+        position: sticky;
+        top: 0;
+        /* Position it at the top */
+        width: 100%;
+        z-index: 1000;
+        /* Make sure it's above other content */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* Optional: Add shadow to make it stand out */
+    }
+
+    .logo {
+        display: flex;
+        font-size: 30px;
+        font-weight: 700;
+        align-items: center;
+        /* font-family: "Inria Sans", sans-serif; */
+        font-family: "Itim", cursive;
+        /* font-style: italic; */
+        cursor: pointer;
+    }
+
+    ul {
+        display: flex;
+        font-size: 20px;
+        font-family: "Inria Sans", sans-serif;
+    }
+
+    ul>li {
+        list-style: none;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    li>a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
+
+
+<nav class="sticky">
+
+
+    <div class="logo">
+        ConnectMusic
+    </div>
+    <ul>
+        <li onclick="home()"><a>Home</a></li>
+        <li onclick="profile()"> <a>Profile</a></li>
+        <li onclick="login()"> <a>Login</a></li>
+
+    </ul>
+</nav>

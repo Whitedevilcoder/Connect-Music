@@ -1,24 +1,33 @@
 /* styles.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+*{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.profile-container {
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 20px;
+body{
+    background-color: #181d38;
+
+}
+
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    /* max-width: 800px; */
+
+    /* margin-top: 100px; */
+    margin: 100px;
+    color: white;
+    padding: 0 200px 0 200px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 50px 60px rgba(0, 0, 0, 0.1);
 }
 
 .profile-header {
     display: flex;
     align-items: center;
+    color: whitesmoke;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 20px;
     margin-bottom: 20px;
@@ -41,13 +50,13 @@ body {
 }
 
 .profile-details .username {
-    color: #888;
+    color: whitesmoke;
     margin: 5px 0;
 }
 
 .profile-details .bio {
     font-size: 16px;
-    color: #555;
+    color: whitesmoke;
 }
 
 section {
@@ -56,7 +65,7 @@ section {
 
 section h2 {
     font-size: 20px;
-    border-bottom: 2px solid #4CAF50;
+    border-bottom: 2px solid #e0e0e0;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }

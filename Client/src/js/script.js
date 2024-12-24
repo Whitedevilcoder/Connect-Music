@@ -1,3 +1,7 @@
+function home() {
+    console.log("redirected to login page");
+    window.location.href = "/"
+}
 function login() {
     console.log("redirected to login page");
     window.location.href = "./login"

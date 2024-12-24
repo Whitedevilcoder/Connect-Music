@@ -1,46 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile Page</title>
+    <title><%= username%>'s profile</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
     <link rel="stylesheet" href="/css/profile.css">
 </head>
+
 <body>
-    <div class="profile-container">
-        <header class="profile-header">
-            <div class="profile-picture">
-                <img src="profile-picture.jpg" alt="Profile Picture">
+
+        <%-include('navbar')%>
+    
+
+
+    <main>
+        <div class="profile">
+            <div class="profile-header">
+                <div class="profile-picture">
+                    <img src="/img/logo.jpg" alt="Profile Picture">
+                </div>
+                <div class="profile-details">
+                    <h1 class="name">
+                        <%= username %>
+                    </h1>
+                    <p class="username">@<%= username %>
+                    </p>
+                    <p class="bio">Tech enthusiast, music lover, and traveler.</p>
+                </div>
             </div>
-            <div class="profile-details">
-                <h1 class="name"><%= username %></h1>
-                <p class="username">@johndoe</p>
-                <p class="bio">Tech enthusiast, music lover, and traveler.</p>
-            </div>
-        </header>
-        
-        <section class="contact-info">
-            <h2>Contact Information</h2>
-            <p>Email: john.doe@example.com</p>
-            <p>Phone: (123) 456-7890</p>
-        </section>
-        
-        <section class="about-me">
-            <h2>About Me</h2>
-            <p>Hi, I'm John! I love exploring new technologies and applying them to solve real-world problems. In my free time, you can find me listening to music or planning my next adventure.</p>
-        </section>
-        
-        <section class="social-media">
-            <h2>Social Media</h2>
-            <a href="https://www.linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/johndoe" target="_blank">Twitter</a>
-            <a href="https://instagram.com/johndoe" target="_blank">Instagram</a>
-        </section>
-        
-        <section class="activity-feed">
-            <h2>Activity Feed</h2>
-            <p>Recent posts, updates, and shared content will appear here.</p>
-        </section>
-    </div>
+
+            <section class="contact-info">
+                <h2>Contact Information</h2>
+                <p>Email: <%= email %>
+                </p>
+
+            </section>
+
+            <section class="about-me">
+                <h2>About Me</h2>
+                <p>Hi, I'm <%= username%>! I love exploring new technologies and applying them to solve real-world problems. In my
+                    free time, you can find me listening to music or planning my next adventure.</p>
+            </section>
+
+            <section class="social-media">
+                <h2>Social Media</h2>
+                <a href="https://instagram.com/johndoe" target="_blank">Instagram</a>
+            </section>
+
+
+        </div>
+
+    </main>
+    <script src="/js/script.js"></script>
+
 </body>
+
 </html>
