@@ -2,19 +2,32 @@ const express = require('express');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const axios = require('axios');
+const querystring = require('querystring');
+const crypto = require('crypto');
+
 const collection = require('./config/config'); // Ensure this path is correct
 
 const app = express();
 const port = 3000;
+
+
+const client_id = 'f551026234de40d08e493e9eebbd9254';
+const client_secret = 'ff9115b90a234802bef6d3b1822cff63';
+const redirect_uri = 'hhtp://localhost:3000/callback';
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 // Parse URL-encoded bodies (as sent by HTML forms)
 app.use(express.urlencoded({ extended: true }));
 
+const sessionSecret = crypto.randomBytes(32).toString('hex');
+console.log(sessionSecret);
+
+
 // Session management setup
 app.use(session({
-  secret: 'your-secret-key', // Change this to a stronger secret key in production
+  secret: 'sessionSecret', // Change this to a stronger secret key in production
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false } // Set to true for HTTPS
@@ -44,7 +57,47 @@ app.get('/YTS', (req, res) => {
 // Login page
 app.get('/login', (req, res) => {
   res.render('login');
+  const scope = 'user-read-private user-read-email';
+  const params = querystring.stringify({
+    response_type : 'code',
+    client_id,
+    scope,
+    redirect_uri
+  });
+  res.redirect(`https://accounts.spotify.com/authorize?${params}`);  
 });
+
+app.get('/callback', async(req, res) =>{
+  const code = req.query.code || null;
+  
+  const authOptions = {
+    method : 'post',
+    url: 'https://accounts.spotify.com/api/token',
+    data : querystring.stringify({
+      code,
+      redirect_uri,
+      grant_type: 'authorization_code'
+        }),
+    headers:{
+       'Authorization': 'Basic ' + Buffer.from(client_id + ':' + client_secret).toString('base64'),
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+  };
+  try {
+    const response = await axios(authOptions);
+    const {access_token, refresh_token} = response.data;
+    req.session.access_token = access_token;
+    req.session.refresh_token = refresh_token;
+
+    res.redirect('/profile');
+
+  }catch(error){
+    console.log(error);
+    res.redirect('/');
+
+  }
+})
 
 // Signup page
 app.get('/signup', (req, res) => {

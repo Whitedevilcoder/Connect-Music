@@ -95,7 +95,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+
 
 # vuepress build output
 .vuepress/dist
@@ -179,3 +179,4 @@ local.settings.json
 
 # Specific file exclusions
 node_modules/.bin/rlp
+node_modules/.bin/
