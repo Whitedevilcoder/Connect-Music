@@ -4,17 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= username%>'s profile</title>
-    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+    <title><%= username %>'s Profile</title>
     <link rel="stylesheet" href="/css/profile.css">
 </head>
 
 <body>
-
-        <%-include('navbar')%>
-    
-
-
+    <%- include('navbar') %>
     <main>
         <div class="profile">
             <div class="profile-header">
@@ -22,39 +17,29 @@
                     <img src="/img/logo.jpg" alt="Profile Picture">
                 </div>
                 <div class="profile-details">
-                    <h1 class="name">
-                        <%= username %>
-                    </h1>
-                    <p class="username">@<%= username %>
-                    </p>
+                    <h1 class="name"><%= username %></h1>
+                    <p class="username">@<%= username %></p>
                     <p class="bio">Tech enthusiast, music lover, and traveler.</p>
                 </div>
             </div>
 
             <section class="contact-info">
                 <h2>Contact Information</h2>
-                <p>Email: <%= email %>
-                </p>
-
+                <p>Email: <%= email %></p>
             </section>
 
             <section class="about-me">
                 <h2>About Me</h2>
-                <p>Hi, I'm <%= username%>! I love exploring new technologies and applying them to solve real-world problems. In my
-                    free time, you can find me listening to music or planning my next adventure.</p>
+                <p>Hi, I'm <%= username %>! I love exploring new technologies and applying them to solve real-world problems. In my free time, you can find me listening to music or planning my next adventure.</p>
             </section>
 
             <section class="social-media">
                 <h2>Social Media</h2>
                 <a href="https://instagram.com/johndoe" target="_blank">Instagram</a>
             </section>
-
-
         </div>
-
     </main>
-    <script src="/js/script.js"></script>
-
+    <script src="/js/navbar.js"></script>
 </body>
 
 </html>

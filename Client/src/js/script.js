@@ -18,8 +18,9 @@ function signup() {
 }
 
 function onConvert() {
-    console.log("button is clicked");
-    window.location.href = "./YTS"
+    console.log("redirected to playlist conversion page of specific platform");
+    window.location.href = "./STY"
 }
+
 
 

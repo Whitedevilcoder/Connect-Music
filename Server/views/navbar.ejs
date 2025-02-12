@@ -1,68 +1,69 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
     nav {
-        background-color: #242a48;
-        color: white;
-        padding: 20px 30px;
-        /* position: fixed; */
-        display: flex;
-        /* flex-direction: row; */
-        justify-content: space-between;
-        /* overflow: hidden; */
-        width: 100%;
-
+      background-color: #242a48;
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     }
 
     nav.sticky {
-        position: sticky;
-        top: 0;
-        /* Position it at the top */
-        width: 100%;
-        z-index: 1000;
-        /* Make sure it's above other content */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        /* Optional: Add shadow to make it stand out */
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .logo {
-        display: flex;
-        font-size: 30px;
-        font-weight: 700;
-        align-items: center;
-        /* font-family: "Inria Sans", sans-serif; */
-        font-family: "Itim", cursive;
-        /* font-style: italic; */
-        cursor: pointer;
+      display: flex;
+      font-size: 30px;
+      font-weight: 700;
+      align-items: center;
+      font-family: "Itim", cursive;
+      cursor: pointer;
     }
 
     ul {
-        display: flex;
-        font-size: 20px;
-        font-family: "Inria Sans", sans-serif;
+      display: flex;
+      font-size: 20px;
+      font-family: "Inria Sans", sans-serif;
     }
 
-    ul>li {
-        list-style: none;
-        padding: 20px;
-        cursor: pointer;
+    ul > li {
+      list-style: none;
+      padding: 20px;
+      cursor: pointer;
     }
 
-    li>a {
-        text-decoration: none;
-        color: white;
+    li > a {
+      text-decoration: none;
+      color: white;
     }
-</style>
-
-
-<nav class="sticky">
-
-
+  </style>
+</head>
+<body>
+  <nav class="sticky">
     <div class="logo">
-        ConnectMusic
+      ConnectMusic
     </div>
     <ul>
-        <li onclick="home()"><a>Home</a></li>
-        <li onclick="profile()"> <a>Profile</a></li>
-        <li onclick="login()"> <a>Login</a></li>
-
+      <li><a href="/">Home</a></li>
+      <% if (typeof user !== 'undefined' && user) { %>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/protected">Protected</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Signup</a></li>
+      <% } %>
     </ul>
-</nav>
+  </nav>
+</body>
+</html>

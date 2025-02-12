@@ -6,12 +6,12 @@ const connect = mongoose.connect('mongodb://localhost:27017/Connectmusic')
 // check db is connected
 
 connect.then(() => {
-    console.log("db is connected");
+    console.log("Database is connected");
 
 })
 
     .catch(() => {
-        console.log("db cannot be connected");
+        console.log("Database cannot be connected");
 
     })
 
