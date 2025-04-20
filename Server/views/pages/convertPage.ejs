@@ -1,20 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert from Spotify to YouTube Music</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+        }
+
+        .playlist {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .playlist img {
+            border-radius: 8px;
+            margin-right: 1rem;
+            width: 100px;
+            height: auto;
+        }
+
+        .playlist-info {
+            flex-grow: 1;
+        }
+
+        .convert-btn {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .convert-btn:hover {
+            background-color: #cc0000;
+        }
+    </style>
 </head>
+
+</head>
+
 <body>
 
     <div class="container">
-        <div id="spotify">
-            Spotify
-        </div>
-    </div>
-   <script>
-    
 
-   </script>
+        <div id="spotify">
+            <% if (playlists && playlists.length> 0) { %>
+                <% playlists.forEach(function(playlist) { %>
+                    <div class="playlist">
+                        <% if (playlist.images && playlist.images.length> 0) { %>
+                            <img src="<%= playlist.images[0].url %>" alt="Playlist cover" />
+                            <% } else { %>
+                                <img src="/img/cover.jpeg" alt="No cover available" />
+                                <% } %>
+
+                                    <div class="playlist-info">
+                                        <h2>
+                                            <%= playlist.name %>
+                                        </h2>
+                                        <p>Total Tracks: <%= playlist.tracks.total %>
+                                        </p>
+                                        <a href="<%= playlist.external_urls.spotify %>" target="_blank">Open in
+                                            Spotify</a>
+
+                                        <form action="/convert-playlist" method="POST" style="margin-top: 0.5rem;">
+                                            <input type="hidden" name="playlistId" value="<%= playlist.id %>">
+                                            <input type="hidden" name="playlistName" value="<%= playlist.name %>">
+                                            <button type="submit" class="convert-btn">Convert to YouTube</button>
+                                        </form>
+                                    </div>
+                    </div>
+
+                    <% }); %>
+                        <% } else { %>
+                            <p>No playlists found.</p>
+                            <% } %>
+        </div>
+
+    </div>
+    <script>
+
+
+    </script>
 </body>
+
 </html>
