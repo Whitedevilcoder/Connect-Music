@@ -31,7 +31,7 @@
             flex-grow: 1;
         }
 
-        .convert-btn {
+        .btn {
             background-color: #FF0000;
             color: white;
             border: none;
@@ -41,7 +41,7 @@
             transition: background-color 0.3s ease;
         }
 
-        .convert-btn:hover {
+        .btn:hover {
             background-color: #cc0000;
         }
     </style>
@@ -50,47 +50,118 @@
 </head>
 
 <body>
+    <%- include('../layouts/navbar') %>
 
-    <div class="container">
 
-        <div id="spotify">
-            <% if (playlists && playlists.length> 0) { %>
-                <% playlists.forEach(function(playlist) { %>
-                    <div class="playlist">
-                        <% if (playlist.images && playlist.images.length> 0) { %>
-                            <img src="<%= playlist.images[0].url %>" alt="Playlist cover" />
+        <div class="container">
+
+
+
+            <div id="spotify">
+                <% if (playlists && playlists.length> 0) { %>
+                    <% playlists.forEach(function(playlist) { %>
+                        <div class="playlist">
+                            <% if (playlist.images && playlist.images.length> 0) { %>
+                                <img src="<%= playlist.images[0].url %>" alt="Playlist cover" />
+                                <% } else { %>
+                                    <img src="/img/cover.jpeg" alt="No cover available" />
+                                    <% } %>
+
+                                        <div class="playlist-info">
+                                            <h2>
+                                                <%= playlist.name %>
+                                            </h2>
+                                            <p>Total Tracks: <%= playlist.tracks.total %>
+                                            </p>
+                                            <button class="btn" style="text-decoration: none;">
+
+                                                <a href="<%= playlist.external_urls.spotify %>" target="_blank"
+                                                    style="text-decoration: none; color: white; font-weight: bold;">Open
+                                                    in
+                                                    Spotify</a>
+                                            </button>
+                                            <button onclick="fetchTracks('<%= playlist.id %>', '<%= playlist.name %>')"
+                                                class="view-tracks-btn btn">View Songs</button>
+
+                                            <form action="/create-youtube-playlist" method="POST">
+                                                <input type="hidden" name="playlistId" value="<%= playlist.id %>">
+                                                <input type="hidden" name="playlistName" value="<%= playlist.name %>">
+                                                <button type="submit" class="btn">Convert to YouTube</button>
+                                            </form>
+
+                                        </div>
+                        </div>
+
+                        <% }); %>
                             <% } else { %>
-                                <img src="/img/cover.jpeg" alt="No cover available" />
+                                <p>No playlists found.</p>
                                 <% } %>
+            </div>
 
-                                    <div class="playlist-info">
-                                        <h2>
-                                            <%= playlist.name %>
-                                        </h2>
-                                        <p>Total Tracks: <%= playlist.tracks.total %>
-                                        </p>
-                                        <a href="<%= playlist.external_urls.spotify %>" target="_blank">Open in
-                                            Spotify</a>
-
-                                        <form action="/convert-playlist" method="POST" style="margin-top: 0.5rem;">
-                                            <input type="hidden" name="playlistId" value="<%= playlist.id %>">
-                                            <input type="hidden" name="playlistName" value="<%= playlist.name %>">
-                                            <button type="submit" class="convert-btn">Convert to YouTube</button>
-                                        </form>
-                                    </div>
-                    </div>
-
-                    <% }); %>
-                        <% } else { %>
-                            <p>No playlists found.</p>
-                            <% } %>
         </div>
 
-    </div>
-    <script>
+
+        <div id="trackModal" class="modal"
+            style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.7); z-index:9999; overflow:auto;">
+            <div
+                style=" background:white; margin:5% auto; padding:20px; width:90vw; max-width:600px; border-radius:10px; position:relative;">
+                <span onclick="closeModal()"
+                    style="position: absolute; top:10px; right:20px; cursor:pointer; font-size:24px;">&times;</span>
+                <h2 id="modalPlaylistName">Playlist</h2>
+                <ul id="modalTrackList" style="list-style:none; padding:0; "></ul>
+            </div>
 
 
-    </script>
+
+        </div>
+        </div>
+
+
 </body>
+<script>
+    // function showLoading(form) {
+    //     const button = form.querySelector('button');
+    //     button.disabled = true;
+    //     button.textContent = 'Converting...';
+    // }
+
+    function fetchTracks(playlistId, playlistName) {
+        fetch(`/playlist/${playlistId}/tracks`)
+            .then(res => res.json())
+            .then(data => {
+                const trackList = document.getElementById('modalTrackList');
+                const modalTitle = document.getElementById('modalPlaylistName');
+                modalTitle.textContent = playlistName;
+                trackList.innerHTML = '';
+
+                data.forEach((track, i) => {
+                    const li = document.createElement('li');
+                    li.style.marginBottom = '10px';
+                    li.innerHTML = `
+                   
+                    <img src="${track.image}" width="60" style="border-radius:6px;" alt="track image">
+                  
+                    <strong>${i + 1}. ${track.name}</strong><br>
+            ${track.artists.join(', ')}<br>
+            Duration: ${track.duration}            `;
+
+                    trackList.appendChild(li);
+                });
+
+                document.getElementById('trackModal').style.display = 'block';
+            })
+            .catch(err => {
+                console.error('Failed to fetch tracks:', err);
+                alert('Error loading tracks.');
+            });
+    }
+
+    function closeModal() {
+        document.getElementById('trackModal').style.display = 'none';
+
+    }
+
+
+</script>
 
 </html>

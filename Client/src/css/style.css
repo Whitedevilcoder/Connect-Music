@@ -22,10 +22,11 @@ body {
     background: linear-gradient(to right, #ff7e5f, #feb47b);       
   }
 */
-body {
+
+/* body {
     -webkit-user-select: none;
-    /* Prevent text selection in WebKit browsers */
-}
+    Prevent text selection in WebKit browsers
+} */
 
 
 
@@ -55,6 +56,7 @@ html {
 
 nav {
     background-color: #242a48;
+    background-color: hwb(305 1% 82%);
     color: white;
     padding: 20px 30px;
     position: relative;
@@ -109,6 +111,7 @@ li>a {
 
 .homeScreen {
     background-color: #181d38;
+    background-color: hwb(306.23deg 1.18% 68.63%);
     /* background-color: #4267B2; */
     overflow: hidden;
 
@@ -206,10 +209,12 @@ h2 {
 }
 
 .s-btn {
-    color: #181d38;
+    /* color: #181d38; */
+    color: hwb(306.23deg 1.18% 68.63%);
     background-color: white;
     padding: 10px;
-    border: 2px solid #181d38;
+    /* border: 2px solid #181d38; */
+    border: 2px solid hwb(306.23deg 1.18% 68.63%);
     border-radius: 20px;
     margin: 15px;
     width: 100px;
@@ -218,7 +223,7 @@ h2 {
 }
 
 .s-btn:hover {
-    background-color: #181d38;
+    background-color: hwb(306.23deg 1.18% 68.63%);
     color: white;
 
 }
@@ -319,6 +324,7 @@ footer {
     text-align: center;
     font-weight: 500;
     background-color: #181d38;
+    background-color: hwb(306.23deg 1.18% 68.63%);
     color: #fff;
     font-family: "Itim", cursive;
     margin-bottom: 0px;
@@ -327,13 +333,14 @@ footer {
 
 .form-body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
     margin-left: 50vw;
     /* background-color: rgb(72 103 170); */
-    background-image: url(/img/bgimg.png);
+    /* background-image: url(/img/bgimg.png); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -364,6 +371,7 @@ footer {
 .form-Container {
     width: 400px;
     border: 2px solid black;
+    border-radius: 9px;
     justify-content: center;
     align-items: center;
     padding: 20px;

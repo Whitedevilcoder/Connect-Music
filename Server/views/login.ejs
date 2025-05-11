@@ -7,14 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="/css/style.css">
+    <!-- <link rel="stylesheet" href="/css/login.css"> -->
 </head>
 
-<body class="form-body">
+<body style="
+ background-image: url(/img/bgimg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: 100%;">
+<%- include('layouts/navbar') %>
+
+    <div class="form-body">
+
+        
     <div class="form-Container">
         <div class="sign-in-title">Login</div>
         <div class="sign-in-row">
             <button class="fbtn" type="button" onclick="window.location.href='/login/spotify'">Login with Spotify</button>
-            <!-- <button class="fbtn" type="button" onclick="window.location.href='/login/youtube music'">Login with Youtube music</button> -->
+            <button class="fbtn" type="button" onclick="window.location.href='/login/youtube'">Login with YouTube music</button>
         </div>
         <div class="or-container">
             <div class="line"></div>
@@ -33,9 +44,18 @@
                     <button class="s-btn" type="submit">Login</button>
                 </div>
             </div>
-            <p>Don't have an account <a href="/signup" style="color: whitesmoke; text-decoration: none; font-weight: bold;">Signup Here</a></p>
+            <div style="display: flex; justify-content: center;">
+
+                <p>Don't have an account <a href="/signup" style="color: whitesmoke; text-decoration: none; font-weight: bold;">Signup Here</a></p>
+            </div>
         </form>
     </div>
+    
+</div>
+    <footer>
+        a G Praveen Kumar production <br>
+        ConnectMusic &copy; 2024. All Rights Reserved
+     </footer>
     <script src="/js/script.js"></script>
 </body>
 </html>

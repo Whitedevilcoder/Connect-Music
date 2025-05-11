@@ -1,68 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     nav {
       background-color: #242a48;
       color: white;
       padding: 20px 30px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       width: 100%;
     }
 
     nav.sticky {
       position: sticky;
       top: 0;
-      width: 100%;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .logo {
-      display: flex;
       font-size: 30px;
       font-weight: 700;
-      align-items: center;
       font-family: "Itim", cursive;
       cursor: pointer;
     }
 
-    ul {
+    ul.nav-links {
       display: flex;
-      font-size: 20px;
+      gap: 20px;
+      font-size: 18px;
       font-family: "Inria Sans", sans-serif;
-    }
-
-    ul > li {
       list-style: none;
-      padding: 20px;
-      cursor: pointer;
     }
 
-    li > a {
+    .nav-links li a {
       text-decoration: none;
       color: white;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffdd57; /* subtle hover color */
     }
   </style>
 </head>
 <body>
   <nav class="sticky">
-    <div class="logo">
-      ConnectMusic
-    </div>
-    <ul>
+    <div class="logo">ConnectMusic</div>
+    <ul class="nav-links">
       <li><a href="/">Home</a></li>
-      <% if (typeof user !== 'undefined' && user) { %>
+      <% if (user) { %>
         <li><a href="/profile">Profile</a></li>
-        <li><a href="/protected">Protected</a></li>
         <li><a href="/logout">Logout</a></li>
       <% } else { %>
         <li><a href="/login">Login</a></li>
         <li><a href="/signup">Signup</a></li>
       <% } %>
+      
     </ul>
   </nav>
 </body>
