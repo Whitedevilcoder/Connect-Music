@@ -441,7 +441,6 @@ if (!Array.isArray(items) || items.length === 0) {
   return res.status(400).send('No YouTube channel found for this account.');
 }
 
-
     const userProfile = items[0].snippet;
 
     const username = userProfile.title;
@@ -545,6 +544,7 @@ app.post('/create-youtube-playlist', async (req, res) => {
         }
       });
     }
+    
 
     res.send(`YouTube playlist "${playlistName}" created with ${videoIds.length} songs.`);
     
@@ -553,8 +553,6 @@ app.post('/create-youtube-playlist', async (req, res) => {
     res.status(500).send('Failed to convert playlist.');
   }
 });
-
-
 
 // Start the server
 app.listen(port, () => {
